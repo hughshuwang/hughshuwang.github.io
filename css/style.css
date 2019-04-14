@@ -20,7 +20,7 @@ body {
   color: rgba(0, 0, 0, 0.9);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
     'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
+  font-size: 11px;
 }
 article,
 aside,
@@ -106,7 +106,7 @@ img {
 }
 .header .wrap {
   display: flex;
-  max-width: 1024px;
+  max-width: 2048px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -202,7 +202,7 @@ img {
 .main {
   position: relative;
   min-height: calc(100vh - 65px - 60px);
-  max-width: 640px;
+  max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
   padding: 24px;
@@ -306,7 +306,7 @@ img {
 }
 .post-title {
   margin-bottom: 8px;
-  font-size: 36px;
+  font-size: 30px;
   transform: translateX(-1px);
 }
 .post-meta {
@@ -315,7 +315,7 @@ img {
   letter-spacing: 0.5px;
 }
 .post-content {
-  font-size: 17px;
+  font-size: 13px;
   line-height: 1.9;
 }
 .post-content h1 {

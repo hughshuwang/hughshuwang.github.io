@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://cyaned.co/about/</loc>
+    <lastmod>1995-05-19T23:58:37-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://cyaned.co/</loc>
     <lastmod>1995-05-19T23:58:37-04:00</lastmod>
     <priority>0</priority>
@@ -10,7 +15,18 @@
   
   <url>
     <loc>http://cyaned.co/posts/</loc>
-    <lastmod>1995-05-19T23:58:37-04:00</lastmod>
+    <lastmod>1995-04-14T16:41:08-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://cyaned.co/posts/snowboard/</loc>
+    <lastmod>1995-04-14T16:41:08-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://cyaned.co/posts/sheets/</loc>
+    <lastmod>1995-04-13T16:41:08-04:00</lastmod>
   </url>
   
   <url>

@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>シアイン</title>
-    <link>http://cyaned.co/</link>
-    <description>Recent content on シアイン</description>
+    <title>Posts on シアイン</title>
+    <link>http://cyaned.co/posts/</link>
+    <description>Recent content in Posts on シアイン</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 1995 23:58:37 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 14 Apr 1995 16:41:08 -0400</lastBuildDate>
     
-	<atom:link href="http://cyaned.co/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://cyaned.co/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>About</title>
-      <link>http://cyaned.co/about/</link>
-      <pubDate>Fri, 19 May 1995 23:58:37 -0400</pubDate>
-      
-      <guid>http://cyaned.co/about/</guid>
-      <description>&amp;ldquo;This is all in the name of science.&amp;rdquo;</description>
-    </item>
     
     <item>
       <title>Snowboarding Record</title>
