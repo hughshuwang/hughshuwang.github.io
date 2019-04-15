@@ -21,21 +21,25 @@
     </item>
     
     <item>
-      <title>Research 🌄</title>
-      <link>http://cyaned.co/channels/research/</link>
+      <title>Aesthetics 🎆</title>
+      <link>http://cyaned.co/channels/aesthetics/</link>
       <pubDate>Thu, 18 May 1995 16:41:08 -0400</pubDate>
       
-      <guid>http://cyaned.co/channels/research/</guid>
-      <description>&lt;p&gt;Collection of assets in quantitative finance and computer science.&lt;/p&gt;</description>
+      <guid>http://cyaned.co/channels/aesthetics/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../../images/blond.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Collection of playlists, visual art, and all sorts of design.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Aesthetics 🎆</title>
-      <link>http://cyaned.co/channels/aesthetics/</link>
+      <title>Exploration 🌄</title>
+      <link>http://cyaned.co/channels/exploration/</link>
       <pubDate>Wed, 17 May 1995 16:41:08 -0400</pubDate>
       
-      <guid>http://cyaned.co/channels/aesthetics/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Collection of playlist, visual art, and all sorts of design.&lt;/strong&gt;&lt;/p&gt;</description>
+      <guid>http://cyaned.co/channels/exploration/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../../images/mfin.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Collection of research in quantitative finance.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,7 +48,9 @@
       <pubDate>Tue, 16 May 1995 16:41:08 -0400</pubDate>
       
       <guid>http://cyaned.co/channels/moments/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Collection of life memories and achievements.&lt;/strong&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;../../images/guitar_sb.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Collection of life memories and achievements.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
