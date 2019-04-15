@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>シアインド</title>
-    <link>http://cyaned.co/</link>
-    <description>Recent content on シアインド</description>
+    <title>Channels on シアインド</title>
+    <link>http://cyaned.co/channels/</link>
+    <description>Recent content in Channels on シアインド</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 1995 23:58:37 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 18 May 1995 16:41:08 -0400</lastBuildDate>
     
-	<atom:link href="http://cyaned.co/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://cyaned.co/channels/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Story 🌌</title>
-      <link>http://cyaned.co/story/</link>
-      <pubDate>Fri, 19 May 1995 23:58:37 -0400</pubDate>
-      
-      <guid>http://cyaned.co/story/</guid>
-      <description>&lt;p&gt;&amp;ldquo;This is all in the name of science.&amp;rdquo; - Leonid Kogan&lt;/p&gt;</description>
-    </item>
     
     <item>
       <title>Research 🌄</title>
