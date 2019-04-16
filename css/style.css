@@ -251,11 +251,12 @@ img {
   flex-direction: column;
   justify-content: center;
   height: 200px;
-  margin-bottom: 15px;
+  margin-top: 35px;
+  margin-bottom: 25px;
   padding-bottom: 15px;
 }
 .first-entry .entry-header h2 {
-  font-size: 40px;
+  font-size: 50px;
 }
 .first-entry .entry-content {
   margin-top: 10px;
@@ -303,12 +304,12 @@ img {
 /* Post single
 -------------------------------------------------- */
 .post-header {
-  margin-top: 15px;
+  margin-top: 65px;
   margin-bottom: 15px;
 }
 .post-title {
-  margin-bottom: 8px;
-  font-size: 30px;
+  margin-bottom: 15px;
+  font-size: 40px;
   transform: translateX(-1px);
 }
 .post-meta {
@@ -317,8 +318,8 @@ img {
   letter-spacing: 0.5px;
 }
 .post-content {
-  font-size: 13px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.4;
 }
 .post-content h1 {
   margin-top: 48px;

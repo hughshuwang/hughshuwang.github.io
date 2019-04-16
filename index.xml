@@ -2,52 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>シアインド</title>
-    <link>http://cyaned.co/</link>
+    <link>https://cyaned.co/</link>
     <description>Recent content on シアインド</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 19 May 1995 23:58:37 -0400</lastBuildDate>
     
-	<atom:link href="http://cyaned.co/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cyaned.co/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Story 🌌</title>
-      <link>http://cyaned.co/story/</link>
+      <link>https://cyaned.co/story/</link>
       <pubDate>Fri, 19 May 1995 23:58:37 -0400</pubDate>
       
-      <guid>http://cyaned.co/story/</guid>
-      <description>&lt;p&gt;&amp;ldquo;This is all in the name of science.&amp;rdquo; - Leonid Kogan&lt;/p&gt;</description>
+      <guid>https://cyaned.co/story/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../../images/everyday.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;This is all in the name of science.&amp;rdquo; - Leonid Kogan&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Aesthetics 🎆</title>
-      <link>http://cyaned.co/channels/aesthetics/</link>
+      <link>https://cyaned.co/channels/aesthetics/</link>
       <pubDate>Thu, 18 May 1995 16:41:08 -0400</pubDate>
       
-      <guid>http://cyaned.co/channels/aesthetics/</guid>
+      <guid>https://cyaned.co/channels/aesthetics/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;../../images/blond.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Collection of playlists, visual art, and all sorts of design.&lt;/strong&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;In pursuit of elegant self expression and emotional resonance.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Exploration 🌄</title>
-      <link>http://cyaned.co/channels/exploration/</link>
+      <title>Deductivism 🌄</title>
+      <link>https://cyaned.co/channels/deductivism/</link>
       <pubDate>Wed, 17 May 1995 16:41:08 -0400</pubDate>
       
-      <guid>http://cyaned.co/channels/exploration/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;../../images/mfin.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+      <guid>https://cyaned.co/channels/deductivism/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../../images/stanford.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Collection of research in quantitative finance.&lt;/p&gt;</description>
+&lt;p&gt;&lt;strong&gt;The worship of logic, formalization, and generalization.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Moments 🏙</title>
-      <link>http://cyaned.co/channels/moments/</link>
+      <title>Flashbacks 🏙</title>
+      <link>https://cyaned.co/channels/moments/</link>
       <pubDate>Tue, 16 May 1995 16:41:08 -0400</pubDate>
       
-      <guid>http://cyaned.co/channels/moments/</guid>
+      <guid>https://cyaned.co/channels/moments/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;../../images/guitar_sb.JPG&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Collection of life memories and achievements.&lt;/strong&gt;&lt;/p&gt;</description>
