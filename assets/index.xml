@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Assets on シアインド</title>
+    <link>https://cyaned.co/assets/</link>
+    <description>Recent content in Assets on シアインド</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://cyaned.co/assets/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://cyaned.co/assets/csam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cyaned.co/assets/csam/</guid>
+      <description>An inspiring conversation with Mr. L A scribbled note on the call with Mr. L, at CSAM, June 14th, 2019. Notes are mostly on my own thoughts and answers, but the questions from Mr. L are enlightening enough in their nature.
+C: How do you describe your specialty? How do you sell yourself?
+S: With a mixed background in quantitative analysis and investment management, I&amp;rsquo;ve built up a good sense about exploring hidden characteristics, connections, and patterns of asset returns and risk profiles from standpoints of both an economist and a mathematician.</description>
+    </item>
+    
+  </channel>
+</rss>
