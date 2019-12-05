@@ -310,12 +310,12 @@ img {
 }
 .post-title {
   margin-bottom: 15px;
-  font-size: 40px;
+  font-size: 44px;
   transform: translateX(-1px);
 }
 .post-meta {
   color: rgba(0, 0, 0, 0.6);
-  font-size: 13px;
+  font-size: 23px;
   letter-spacing: 0.5px;
 }
 .post-content {
