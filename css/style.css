@@ -131,6 +131,7 @@ img {
   margin-left: auto;
   outline: 0;
 }
+/*
 .menu-toggle::before,
 .menu-toggle::after {
   content: '';
@@ -148,7 +149,9 @@ img {
 .menu-toggle::after {
   transform: translate3d(-50%, 5px, 0);
 }
+*/
 
+/*
 .no-scroll .menu-toggle::before,
 .no-scroll .menu-toggle::after {
   background: #888;
@@ -159,6 +162,8 @@ img {
 .no-scroll .menu-toggle::after {
   transform: translate3d(-50%, -1px, 0) rotateZ(-135deg);
 }
+*/
+
 .no-scroll .header {
   position: fixed;
   z-index: 10;
