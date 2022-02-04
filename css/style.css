@@ -557,3 +557,9 @@ img {
   background: linear-gradient(120deg, #7492e6, #8f72c3, #9c66b3, #ba4d95, #ba4d95, #dc3c75);
 }
 
+div.sticky {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+}
+
