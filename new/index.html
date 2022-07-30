@@ -14,13 +14,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>aperçu - CYANED</title>
+    <title>archlinux - CYANED</title>
     
     <meta name="description" content="
 
 
-    &#34;a beautiful body perishes, but a work of art dies not.&#34;
-     - leonardo da vinci
+    &#34;layers of abstraction that serve to hide internals are never a good thing.&#34;
+     - aaron griffin
 ">
     <meta name="author" content="">
     
@@ -68,86 +68,82 @@
 
 <article class="post-single">
   <header class="post-header">
-    <h1 class="post-title">aperçu</h1>
+    <h1 class="post-title">archlinux</h1>
     
   </header>
-  <div class="post-content"><p><img src="../../images/bbb.jpg" alt="" /></p>
+  <div class="post-content"><p><img src="../../images/arch.jpg" alt="" /></p>
 
 <div style='font-size: 13px' align='right'>
-    "a beautiful body perishes, but a work of art dies not."<br>
-     - leonardo da vinci
+    "layers of abstraction that serve to hide internals are never a good thing."<br>
+     - aaron griffin
 </div>
 
 <p><br><br><br><br>
 <br><br><br><br>
 <br><br><br><br></p>
 
-<h2 id="usually-i">usually, i&hellip;</h2>
+<h2 id="memo">memo</h2>
 
-<ul>
-<li>build scale model, lego mocs, websites, car mods, and tune my arch linux</li>
-<li>play my white strat and piano, listen to alt r&amp;b, jazz, pop, and ambient music<br /></li>
-<li>shoot and color grade portraits, artistic cinema footages, and documentaries<br /></li>
-<li>play tennis in summer; cruise and carve in snowy mountains in vt, nh, and me</li>
-<li>rock my hhkb, code in vim, and solve math problems for the world&rsquo;s largest bank</li>
-</ul>
+<p>a simple note for a simple hobbie to pursuit absolute simplicity</p>
+
+<h4 id="installation">installation</h4>
+
+<p>dell optiplex 3080, uefi + grub, f12 for boot menu, 15-min speedrun</p>
+
+<pre><code># boot from flash disk as root@archiso
+iwctl # iwd for wifi, ping to check
+timedatectl set-ntp true # timedatectl status
+
+# get partition and file systems ready in local disk
+fdisk /dev/&lt;local_disk&gt; # 512MB EFI system, Linux Filesystem the rest, mpigntdw
+fdisk -l # check gbt table and partition types, no need for home and swap
+mkfs.ext4 /dev/&lt;root_partition&gt; &amp;&amp; mkfs.fat -F 32 /dev/&lt;efi_system_partition&gt;
+mount /dev/&lt;root_partition&gt; /mnt
+mount --mkdir /dev/&lt;efi_system_partition&gt; /mnt/boot
+lsblk # check mounting points
+
+# actual installation and basic configs
+vim /etc/pacman.d/mirrorlist # check/edit mirrors
+# package signiture issue, keyring pkg out-of-date
+# https://wiki.archlinux.org/title/Pacman/Package_signing#Upgrade_system_regularly
+# optional: pacman -Sy archlinux-keyring 
+pacstrap /mnt base linux linux-firmware sudo vim git man-db man-pages texinfo
+genfstab -U /mnt &gt;&gt; /mnt/etc/fstab # use unique UUID
+arch-chroot /mnt # now in root dir as root
+ln -sf /usr/share/zoneinfo/US/Eastern /etc/location
+hwclock --systohc # generate /etc/adjtime
+# alt: timedatectl list-timezones; timedatectl set-timezone US/Eastern
+vim /etc/locale.gen # uncomment en_US.UTF-8 UTF-8
+locale-gen
+vim /etc/locale.conf # add LANG=en_US.UTF-8 
+vim /etc/hostname
+passwd
+
+# grub, nmcli, and add sudo user
+pacman -S grub efibootmgr networkmanager neofetch
+systemctl enable NetworkManager.service # systemd
+mount --mkdir /dev/&lt;efi_system_partition&gt; /boot/efi # ignore fstab warnings
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
+grub-mkconfig -o /boot/grub/grub.cfg
+useradd -m &lt;username&gt; &amp;&amp; passwd &lt;username&gt; # --create-home
+sudo -lU &lt;username&gt; # check sudo privilege
+usermod -aG wheel &lt;username&gt; # --append --groups 
+vim /etc/sudoers # uncomment %wheel ALL=(ALL) ALL
+exit # check pwd at /
+umount -R /mnt &amp;&amp; reboot
+
+# log in as &lt;user_name&gt;
+sudo nmcli device wifi connect &lt;wifi_name&gt; password &lt;wifi_password&gt; # ping
+sudo pacman -Syu &amp;&amp; neofetch # enjoy
+</code></pre>
+
+<h4 id="day-1">day-1</h4>
+
+<p>wip</p>
 
 <p><br><br><br><br>
 <br><br><br><br>
 <br><br><br><br></p>
-
-<h2 id="inspirations">inspirations&hellip;</h2>
-
-<ul>
-<li><a href="https://altcinc.com/">ash thorp</a></li>
-<li><a href="http://www.beachhousebaltimore.com/">beach house</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Cowboy_Bebop">cowboy bebop</a></li>
-<li><a href="https://www.youtube.com/c/edocolala">edocolala</a></li>
-<li><a href="https://www.fkatwigsofficial.com/">fka twigs</a></li>
-<li><a href="https://blonded.co/">frank ocean</a></li>
-<li><a href="https://www.imdb.com/name/nm0396284/">hsiao-hsien hou</a></li>
-<li><a href="https://boniver.org/">justin vernon</a></li>
-<li><a href="https://shop.kanyewest.com/">kanye west</a></li>
-<li><a href="https://www.imdb.com/name/nm0939182/">kar-wai wong</a></li>
-<li><a href="https://mitsloan.mit.edu/faculty/directory/leonid-kogan">leonid kogan</a></li>
-<li><a href="https://www.imdb.com/name/nm0651900/">mamoru oshii</a></li>
-<li><a href="https://www.imdb.com/name/nm0000233/">quentin tarantino</a></li>
-<li><a href="https://www.imdb.com/name/nm0000040/">stanley kubrick</a></li>
-</ul>
-
-<p><br><br><br><br>
-<br><br><br><br>
-<br><br><br><br></p>
-
-<h2 id="quotes">quotes&hellip;</h2>
-
-<ul>
-<li>&ldquo;w.h.h.&rdquo;</li>
-<li>&ldquo;all journeys will end&rdquo;</li>
-<li>&ldquo;be gentle with yourself&rdquo;</li>
-<li>&ldquo;caring is not an advantage&rdquo;</li>
-<li>&ldquo;keep breathing and hydrated&rdquo;</li>
-<li>&ldquo;don&rsquo;t overheat and don&rsquo;t lose control&rdquo;</li>
-<li>&ldquo;it&rsquo;s all about relationship management&rdquo;</li>
-<li>&ldquo;lightweight makes you fast everywhere&rdquo;</li>
-<li>&ldquo;nothing to rush for, people will die soon&rdquo;</li>
-<li>&ldquo;optimize for peacefulness, in all directions&rdquo;</li>
-<li>&ldquo;don&rsquo;t take anything you can&rsquo;t afford to lose&rdquo;</li>
-</ul>
-
-<p><br><br><br><br>
-<br><br><br><br>
-<br><br><br><br></p>
-
-<h2 id="affiliations">affiliations&hellip;</h2>
-
-<ul>
-<li><a href="https://www.mit.edu/">massachusetts institute of technology</a></li>
-<li><a href="https://mitsloan.mit.edu/">mit sloan school of management</a></li>
-<li><a href="https://am.jpmorgan.com/us/en/asset-management/liq/">j.p. morgan asset management</a></li>
-<li><a href="https://www.berklee.edu/">berklee college of music</a></li>
-<li><a href="https://www.media.mit.edu/">mit media lab</a></li>
-</ul>
 
 <p><br><br><br><br>
 <br><br><br><br>
