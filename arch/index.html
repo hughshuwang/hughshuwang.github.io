@@ -88,7 +88,7 @@
 
 <h4 id="installation">installation</h4>
 
-<pre><code># last updated 2022-07-30
+<pre><code class="language-zsh"># last updated 2022-07-30
 # optiplex 3080, 15-min speedrun
 
 # boot from flash disk as root@archiso
@@ -121,8 +121,7 @@ vim /etc/hostname
 passwd
 
 # grub, nmcli, and add sudo user
-pacman -S grub efibootmgr networkmanager neofetch # efibootmgr for grub
-systemctl enable NetworkManager.service # systemd
+pacman -S grub efibootmgr networkmanager # efibootmgr for grub
 mount --mkdir /dev/&lt;efi_system_partition&gt; /boot/efi # ignore fstab warnings
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -133,9 +132,12 @@ vim /etc/sudoers # uncomment %wheel ALL=(ALL) ALL
 exit # check pwd at /
 umount -R /mnt &amp;&amp; reboot
 
-# log in as &lt;user_name&gt;
-sudo nmcli device wifi connect &lt;wifi_name&gt; password &lt;wifi_password&gt; # ping
-sudo pacman -Syu &amp;&amp; neofetch # enjoy
+# log in as root, enable wifi and bluetooth
+systemctl enable NetworkManager.service # run status to check
+nmcli device wifi connect &lt;wifi_name&gt; password &lt;wifi_password&gt; # ping
+
+sudo pacman -Syu
+sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 </code></pre>
 
 <h4 id="day-1">day-1</h4>
@@ -147,38 +149,57 @@ sudo pacman -Syu &amp;&amp; neofetch # enjoy
 <li>grwm lite</li>
 <li>kb remap with kbd</li>
 <li>zsh/oh-my-zsh, fzf</li>
-<li>tmux, vim(coc, nodejs, fzf) | compile/run/debug, copy/send?</li>
+<li>tmux, vim(coc, nodejs, fzf) | compile/run/debug, copy/send</li>
 <li>concurrent rust, polars, jump/jlrs, glpk</li>
+<li>minimal i3</li>
 </ul>
 
-<pre><code>sudo pacman -Q | less # explicitly installed pacman -Qe
-sudo pacman -S ranger zsh curl fzf tmux nodejs htop
+<pre><code class="language-zsh">sudo pacman -Q | less # explicitly installed pacman -Qe
+sudo pacman -S ranger zsh curl fzf tmux nodejs htop wget chromium
+
+# zsh, omz, dotfile PENDING
 echo $SHELL # check current shell
 cat /etc/shells # check installed shells
 chsh -s /bin/zsh # default shell
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh # sammy
 
-# console kb: https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration
-# x kb: xmodmap
+# TODO: consistent appearance of xterm and console
+# TODO: consistent remap of xterm and console 
+# kb: https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration; xmodmap
+# rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch at
 
-# rmdir mv cp nl whereis locate find chmod df du free ln diff date grep wc ps watch at
-</code></pre>
-
-<h4 id="day-2">day-2</h4>
-
-<p>minimal i3</p>
-
-<pre><code>sudo pacman -S xorg xorg-xinit xorg-xmodmap xterm # xorg bundle
+# minimal i3, dotfile PENDING
+sudo pacman -S xorg xorg-xinit xorg-xmodmap xterm # xorg bundle
 sudo pacman -S i3-wm i3status ttf-dejavu
 # dotfile required to setup xinit and i3
 startx # add exec i3 in ~/.xinitrc
 
-sudo pacman -S chromium # sync on
-# chromium &amp; # in background
-# jobs # kill -9 &lt;PID&gt;
+</code></pre>
 
-# PENDING: config consistent appearance of xterm and console
-# PENDING: share clipboard
+<h4 id="steam">steam</h4>
+
+<pre><code class="language-zsh"># config and troubleshooting see arch wiki - steam
+sudo vim /etc/pacman.conf # comment out multilib section
+sudo pacman -Syu # update/sync 32bit database
+sudo pacman -S lib32-mesa lib32-systemd lib32-vulkan-intel # 32bit drivers
+# sudo pacman -S vulkan-intel wine wine-mono # to be checked
+sudo pacman -S wqy-zenhei # chinese and japanese support
+sudo pacman -S steam # use default providers
+# reboot, proton will be installed by 'enable for all other titles'
+
+# TODO: steam runtime wine/proton issue, crash immediately
+#   wine: Unhandled page fault, MUSK CSGO playable
+#   rerun the above to confirm
+
+# bluetooth and xpadneo for xbox one controller
+pacman -S bluez bluez-utils dkms linux-headers
+git clone https://github.com/atar-axis/xpadneo.git &amp;&amp; cd xpadneo
+sudo ./install.sh # with dkms, then bluetoothctl
+sudo modprobe btusb # load the kernel module btusb
+sudo vim /etc/modules # add btusb at the end
+sudo systemctl enable bluetooth.service # status to check
+sudo bluetoothctl # scan trust pair connect
+
 </code></pre>
 
 <p><br><br><br><br>
