@@ -96,24 +96,21 @@ iwctl # iwd for wifi, ping to check
 timedatectl set-ntp true # timedatectl status
 
 # get partition and file systems ready in local disk
-fdisk /dev/&lt;local_disk&gt; # 512MB EFI system, Linux Filesystem the rest, mpigntdw
-fdisk -l # check gbt table and partition types, no need for home and swap
-mkfs.ext4 /dev/&lt;root_partition&gt; &amp;&amp; mkfs.fat -F 32 /dev/&lt;efi_system_partition&gt;
-mount /dev/&lt;root_partition&gt; /mnt
-mount --mkdir /dev/&lt;efi_system_partition&gt; /mnt/boot
+fdisk /dev/&lt;nv...&gt; # 512MB EFI system, Linux Filesystem the rest, mpigntdw
+fdisk -l # check gbt table and partition types, p1 512M EFI, p2 8G swap (req by steam)
+mkfs.ext4 /dev/&lt;nv...p3&gt; &amp;&amp; mkswap /dev/&lt;nv...p2&gt; &amp;&amp; mkfs.fat -F 32 /dev/&lt;nv...p1&gt;
+mount /dev/&lt;nv...p3&gt; /mnt &amp;&amp; swapon /dev/&lt;nv...p2&gt; &amp;&amp; mount --mkdir /dev/&lt;nv...p1&gt; /mnt/boot
 lsblk # check mounting points
 
 # actual installation and basic configs
 vim /etc/pacman.d/mirrorlist # check/edit mirrors
-# package signiture issue, keyring pkg out-of-date
+pacman -Sy archlinux-keyring # package signiture issue, keyring pkg out-of-date
 # https://wiki.archlinux.org/title/Pacman/Package_signing#Upgrade_system_regularly
-# optional: pacman -Sy archlinux-keyring 
 pacstrap /mnt base linux linux-firmware sudo vim git man-db man-pages texinfo
 genfstab -U /mnt &gt;&gt; /mnt/etc/fstab # use unique UUID
 arch-chroot /mnt # now in root dir as root
-ln -sf /usr/share/zoneinfo/US/Eastern /etc/location
+timedatectl set-timezone America/New_York # timedatectl list-timezones; 
 hwclock --systohc # generate /etc/adjtime
-# alt: timedatectl list-timezones; timedatectl set-timezone US/Eastern
 vim /etc/locale.gen # uncomment en_US.UTF-8 UTF-8
 locale-gen
 vim /etc/locale.conf # add LANG=en_US.UTF-8 
@@ -122,20 +119,21 @@ passwd
 
 # grub, nmcli, and add sudo user
 pacman -S grub efibootmgr networkmanager # efibootmgr for grub
-mount --mkdir /dev/&lt;efi_system_partition&gt; /boot/efi # ignore fstab warnings
+mount --mkdir /dev/&lt;nv...p1&gt; /boot/efi # ignore fstab warnings
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 useradd -m &lt;username&gt; &amp;&amp; passwd &lt;username&gt; # --create-home
-sudo -lU &lt;username&gt; # check sudo privilege
+# sudo -lU &lt;username&gt; # check sudo privilege
 usermod -aG wheel &lt;username&gt; # --append --groups 
 vim /etc/sudoers # uncomment %wheel ALL=(ALL) ALL
 exit # check pwd at /
 umount -R /mnt &amp;&amp; reboot
 
-# log in as root, enable wifi and bluetooth
-systemctl enable NetworkManager.service # run status to check
-nmcli device wifi connect &lt;wifi_name&gt; password &lt;wifi_password&gt; # ping
-
+# log in as normal user
+sudo systemctl start NetworkManager.service # run status to check
+sudo systemctl enable NetworkManager.service # auto connect
+# nmcli device wifi list # show available wifi
+sudo nmcli device wifi connect &lt;wifi_name&gt; password &lt;wifi_password&gt; # ping
 sudo pacman -Syu
 sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 </code></pre>
@@ -146,34 +144,24 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 
 <ul>
 <li>aur</li>
-<li>grwm lite</li>
 <li>kb remap with kbd</li>
-<li>zsh/oh-my-zsh, fzf</li>
+<li>grwm lite: i3, zsh/omz/fzf, vim, ranger</li>
 <li>tmux, vim(coc, nodejs, fzf) | compile/run/debug, copy/send</li>
 <li>concurrent rust, polars, jump/jlrs, glpk</li>
-<li>minimal i3</li>
 </ul>
 
-<pre><code class="language-zsh">sudo pacman -Q | less # explicitly installed pacman -Qe
-sudo pacman -S ranger zsh curl fzf tmux nodejs htop wget chromium
+<pre><code class="language-zsh"># rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch
+# sudo pacman -Q | less # explicitly installed pacman -Qe
+sudo pacman -S htop zsh fzf ranger tmux curl nodejs wget chromium alacritty
+sudo pacman -S xorg xorg-xinit xorg-xmodmap i3-wm i3status ttf-dejavu cantarell-font
+# 'exec i3' in ~/.xinitrc
 
 # zsh, omz, dotfile PENDING
-echo $SHELL # check current shell
-cat /etc/shells # check installed shells
+# echo $SHELL # current # cat /etc/shells # installed shells
 chsh -s /bin/zsh # default shell
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh # sammy
 
-# TODO: consistent appearance of xterm and console
-# TODO: consistent remap of xterm and console 
 # kb: https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration; xmodmap
-# rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch at
-
-# minimal i3, dotfile PENDING
-sudo pacman -S xorg xorg-xinit xorg-xmodmap xterm # xorg bundle
-sudo pacman -S i3-wm i3status ttf-dejavu
-# dotfile required to setup xinit and i3
-startx # add exec i3 in ~/.xinitrc
-
 </code></pre>
 
 <h4 id="steam">steam</h4>
@@ -181,15 +169,12 @@ startx # add exec i3 in ~/.xinitrc
 <pre><code class="language-zsh"># config and troubleshooting see arch wiki - steam
 sudo vim /etc/pacman.conf # comment out multilib section
 sudo pacman -Syu # update/sync 32bit database
-sudo pacman -S lib32-mesa lib32-systemd lib32-vulkan-intel # 32bit drivers
-# sudo pacman -S vulkan-intel wine wine-mono # to be checked
-sudo pacman -S wqy-zenhei # chinese and japanese support
+sudo pacman -S xf86-video-intel mesa lib32-mesa
+sudo pacman -S lib32-systemd vulkan-intel lib32-vulkan-intel
+sudo pacman -S wine wine-mono wqy-zenhei
 sudo pacman -S steam # use default providers
 # reboot, proton will be installed by 'enable for all other titles'
-
-# TODO: steam runtime wine/proton issue, crash immediately
-#   wine: Unhandled page fault, MUSK CSGO playable
-#   rerun the above to confirm
+# runtime wine/proton issue, crash immediately, solved: swap req
 
 # bluetooth and xpadneo for xbox one controller
 pacman -S bluez bluez-utils dkms linux-headers
@@ -197,9 +182,12 @@ git clone https://github.com/atar-axis/xpadneo.git &amp;&amp; cd xpadneo
 sudo ./install.sh # with dkms, then bluetoothctl
 sudo modprobe btusb # load the kernel module btusb
 sudo vim /etc/modules # add btusb at the end
-sudo systemctl enable bluetooth.service # status to check
+sudo systemctl start bluetooth.service # status to check
+sudo systemctl enable bluetooth.service
 sudo bluetoothctl # scan trust pair connect
 
+# TODO: store games in a separate SSD
+# chromium --force-device-scale-factor=0.7
 </code></pre>
 
 <p><br><br><br><br>
