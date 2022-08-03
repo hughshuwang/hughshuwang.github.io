@@ -88,19 +88,18 @@
 
 <h4 id="installation">installation</h4>
 
-<pre><code class="language-zsh"># last updated 2022-07-30
-# optiplex 3080, 15-min speedrun
+<pre><code class="language-zsh"># last updated 2022-08-03, optiplex 3080, 15-min
 
 # boot from flash disk as root@archiso
 iwctl # iwd for wifi, ping to check
 timedatectl set-ntp true # timedatectl status
 
 # get partition and file systems ready in local disk
-fdisk /dev/&lt;nv...&gt; # 512MB EFI system, Linux Filesystem the rest, mpigntdw
-fdisk -l # check gbt table and partition types, p1 512M EFI, p2 8G swap (req by steam)
+fdisk /dev/&lt;nv...&gt; # gbt table, 3 partitions, mpigntdw
+fdisk -l # check table and partition types, p1 512M EFI, p2 8G swap (=RAM req by steam)
 mkfs.ext4 /dev/&lt;nv...p3&gt; &amp;&amp; mkswap /dev/&lt;nv...p2&gt; &amp;&amp; mkfs.fat -F 32 /dev/&lt;nv...p1&gt;
 mount /dev/&lt;nv...p3&gt; /mnt &amp;&amp; swapon /dev/&lt;nv...p2&gt; &amp;&amp; mount --mkdir /dev/&lt;nv...p1&gt; /mnt/boot
-lsblk # check mounting points
+lsblk # check mounting points and swap
 
 # actual installation and basic configs
 vim /etc/pacman.d/mirrorlist # check/edit mirrors
@@ -140,7 +139,7 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 
 <h4 id="day-1">day-1</h4>
 
-<p>the most essential tools for a non-de dev environment</p>
+<p>the most essential tools for a minimal dev env</p>
 
 <ul>
 <li>aur</li>
@@ -154,7 +153,10 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 # sudo pacman -Q | less # explicitly installed pacman -Qe
 sudo pacman -S htop zsh fzf ranger tmux curl nodejs wget chromium alacritty
 sudo pacman -S xorg xorg-xinit xorg-xmodmap i3-wm i3status ttf-dejavu cantarell-font
+sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer # add alias in zsh and i3
 # 'exec i3' in ~/.xinitrc
+# 'chromium --force-device-scale-factor=0.7' in i3
+# TODO: i3 video breakout
 
 # zsh, omz, dotfile PENDING
 # echo $SHELL # current # cat /etc/shells # installed shells
@@ -181,13 +183,13 @@ pacman -S bluez bluez-utils dkms linux-headers
 git clone https://github.com/atar-axis/xpadneo.git &amp;&amp; cd xpadneo
 sudo ./install.sh # with dkms, then bluetoothctl
 sudo modprobe btusb # load the kernel module btusb
-sudo vim /etc/modules # add btusb at the end
+# sudo vim /etc/modules # add btusb at the end
 sudo systemctl start bluetooth.service # status to check
 sudo systemctl enable bluetooth.service
 sudo bluetoothctl # scan trust pair connect
 
-# TODO: store games in a separate SSD
-# chromium --force-device-scale-factor=0.7
+# TODO: store games in a separate SSD, xp11, senran, ac7
+#   edit fstab for auto-mount, add path to steam lib
 </code></pre>
 
 <p><br><br><br><br>
