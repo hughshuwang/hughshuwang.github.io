@@ -153,10 +153,16 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 # sudo pacman -Q | less # explicitly installed pacman -Qe
 sudo pacman -S htop zsh fzf ranger tmux curl nodejs wget chromium alacritty
 sudo pacman -S xorg xorg-xinit xorg-xmodmap i3-wm i3status ttf-dejavu cantarell-font
-sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer # add alias in zsh and i3
-# 'exec i3' in ~/.xinitrc
-# 'chromium --force-device-scale-factor=0.7' in i3
-# TODO: i3 video breakout
+sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulsemixer
+vim ~/.xinitrc # add 'exec i3'
+
+# bluetooth, keyboard, xbox, and speaker
+pacman -S bluez bluez-utils
+sudo modprobe btusb # load the kernel module btusb
+sudo systemctl start bluetooth.service # status to check
+sudo systemctl enable bluetooth.service
+sudo vim /etc/bluetooth/main.conf # AutoEnable=true and DiscoverableTimeout=0
+sudo bluetoothctl # power on scan on trust pair connect
 
 # zsh, omz, dotfile PENDING
 # echo $SHELL # current # cat /etc/shells # installed shells
@@ -178,15 +184,10 @@ sudo pacman -S steam # use default providers
 # reboot, proton will be installed by 'enable for all other titles'
 # runtime wine/proton issue, crash immediately, solved: swap req
 
-# bluetooth and xpadneo for xbox one controller
-pacman -S bluez bluez-utils dkms linux-headers
+# xpadneo for xbox one controller
+pacman -S dkms linux-headers
 git clone https://github.com/atar-axis/xpadneo.git &amp;&amp; cd xpadneo
 sudo ./install.sh # with dkms, then bluetoothctl
-sudo modprobe btusb # load the kernel module btusb
-# sudo vim /etc/modules # add btusb at the end
-sudo systemctl start bluetooth.service # status to check
-sudo systemctl enable bluetooth.service
-sudo bluetoothctl # scan trust pair connect
 
 # TODO: store games in a separate SSD, xp11, senran, ac7
 #   edit fstab for auto-mount, add path to steam lib
