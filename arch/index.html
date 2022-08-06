@@ -88,9 +88,9 @@
 
 <h4 id="installation">installation</h4>
 
-<pre><code class="language-zsh"># last updated 2022-08-03, optiplex 3080, 15-min
+<p>last updated in august 2022, 15-min on optiplex 3080</p>
 
-# boot from flash disk as root@archiso
+<pre><code class="language-zsh"># boot from flash disk as root@archiso
 iwctl # iwd for wifi, ping to check
 timedatectl set-ntp true # timedatectl status
 
@@ -101,11 +101,11 @@ mkfs.ext4 /dev/&lt;nv...p3&gt; &amp;&amp; mkswap /dev/&lt;nv...p2&gt; &amp;&amp;
 mount /dev/&lt;nv...p3&gt; /mnt &amp;&amp; swapon /dev/&lt;nv...p2&gt; &amp;&amp; mount --mkdir /dev/&lt;nv...p1&gt; /mnt/boot
 lsblk # check mounting points and swap
 
-# actual installation and basic configs
+# installation and basic configs
 vim /etc/pacman.d/mirrorlist # check/edit mirrors
 pacman -Sy archlinux-keyring # package signiture issue, keyring pkg out-of-date
 # https://wiki.archlinux.org/title/Pacman/Package_signing#Upgrade_system_regularly
-pacstrap /mnt base linux linux-firmware sudo vim git man-db man-pages texinfo
+pacstrap /mnt base linux linux-firmware sudo vim git man-db man-pages texinfo networkmanager 
 genfstab -U /mnt &gt;&gt; /mnt/etc/fstab # use unique UUID
 arch-chroot /mnt # now in root dir as root
 timedatectl set-timezone America/New_York # timedatectl list-timezones; 
@@ -117,7 +117,7 @@ vim /etc/hostname
 passwd
 
 # grub, nmcli, and add sudo user
-pacman -S grub efibootmgr networkmanager # efibootmgr for grub
+pacman -S grub efibootmgr # efibootmgr for grub
 mount --mkdir /dev/&lt;nv...p1&gt; /boot/efi # ignore fstab warnings
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -142,8 +142,7 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 <p>the most essential tools for a minimal dev env</p>
 
 <ul>
-<li>aur</li>
-<li>kb remap with kbd</li>
+<li>kb remap with kbd and xmodmap</li>
 <li>grwm lite: i3, zsh/omz/fzf, vim, ranger</li>
 <li>tmux, vim(coc, nodejs, fzf) | compile/run/debug, copy/send</li>
 <li>concurrent rust, polars, jump/jlrs, glpk</li>
@@ -156,20 +155,25 @@ sudo pacman -S xorg xorg-xinit xorg-xmodmap i3-wm i3status ttf-dejavu cantarell-
 sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulsemixer
 vim ~/.xinitrc # add 'exec i3'
 
-# bluetooth, keyboard, xbox, and speaker
+# bluetoothctl, keyboard, xbox, and speaker, power scan trust pair connect
 pacman -S bluez bluez-utils
 sudo modprobe btusb # load the kernel module btusb
 sudo systemctl start bluetooth.service # status to check
 sudo systemctl enable bluetooth.service
 sudo vim /etc/bluetooth/main.conf # AutoEnable=true and DiscoverableTimeout=0
-sudo bluetoothctl # power on scan on trust pair connect
 
-# zsh, omz, dotfile PENDING
 # echo $SHELL # current # cat /etc/shells # installed shells
-chsh -s /bin/zsh # default shell
+chsh -s /bin/zsh # zsh as default shell
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh # sammy
 
-# kb: https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration; xmodmap
+# aur
+sudo pacman -S --needed base-devel # required once
+git clone https://aur.archlinux.org/&lt;pkg_name&gt;.git &amp;&amp; cd &lt;pkg_name&gt; # under ~/builds
+makepkg -i/--install # manually check the content of PKGBUILD before this
+# if asking for dependencies, use -s/--syncdeps and check pkg list
+#   build, then sudo pacman -U &lt;pkg_name&gt;...zst to install
+
+# TODO: kb: https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration; xmodmap
 </code></pre>
 
 <h4 id="steam">steam</h4>
