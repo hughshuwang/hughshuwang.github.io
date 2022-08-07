@@ -143,14 +143,14 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 
 <ul>
 <li>kb remap with kbd and xmodmap</li>
-<li>grwm lite: i3, zsh/omz/fzf, vim, ranger</li>
+<li>grwm lite: i3, zsh/omz/fzf/aj, vim, lf</li>
 <li>tmux, vim(coc, nodejs, fzf) | compile/run/debug, copy/send</li>
 <li>concurrent rust, polars, jump/jlrs, glpk</li>
 </ul>
 
 <pre><code class="language-zsh"># rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch
 # sudo pacman -Q | less # explicitly installed pacman -Qe
-sudo pacman -S htop zsh fzf ranger tmux zip unzip curl nodejs wget alacritty base-devel cmatrix
+sudo pacman -S htop zsh fzf tmux zip unzip curl wget alacritty base-devel cmatrix
 sudo pacman -S xorg xorg-xinit xorg-xmodmap i3-wm i3status ttf-dejavu cantarell-font
 sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulsemixer
 vim ~/.xinitrc # add 'exec i3'
@@ -166,15 +166,16 @@ sudo vim /etc/bluetooth/main.conf # AutoEnable=true and DiscoverableTimeout=0
 chsh -s /bin/zsh # zsh as default shell
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh # sammy
 
-# aur: chrome
-git clone https://aur.archlinux.org/&lt;pkg_name&gt;.git &amp;&amp; cd &lt;pkg_name&gt; # under ~/builds
-makepkg -si # manually check the content of PKGBUILD before this
+# aur: chrome, lf
+git clone https://aur.archlinux.org/&lt;pkg_name&gt;.git &amp;&amp; cd &lt;pkg_name&gt; # ~/builds
+makepkg -si # provided by pacman, check content of PKGBUILD before this
 # if asking for dependencies, use -s/--syncdeps and check pkg list
 #   build, then sudo pacman -U &lt;pkg_name&gt;...zst to install
 
 # gral@shusheaan, clone and ./install
 #   Vundle and dotbot require git submodule add &lt;url&gt; &lt;target_path&gt;
 #   use token as password, when generating token specify usage (repo)
+git config --global credential.helper store # store username and token
 
 # TODO: kb: https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration; xmodmap
 </code></pre>
@@ -196,8 +197,7 @@ pacman -S dkms linux-headers
 git clone https://github.com/atar-axis/xpadneo.git &amp;&amp; cd xpadneo
 sudo ./install.sh # with dkms, then bluetoothctl
 
-# TODO: store games in a separate SSD, xp11, senran, ac7
-#   edit fstab for auto-mount, add path to steam lib
+# TODO: games in SSD, edit fstab for auto-mount, add path to steam lib
 </code></pre>
 
 <p><br><br><br><br>
