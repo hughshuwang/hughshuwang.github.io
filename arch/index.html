@@ -150,10 +150,11 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 
 <pre><code class="language-zsh"># rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch
 # sudo pacman -Q | less # explicitly installed pacman -Qe
-sudo pacman -S htop zsh fzf tmux zip unzip curl wget alacritty base-devel cmatrix scrot
-sudo pacman -S xorg xorg-xinit xorg-xmodmap i3-wm i3status ttf-dejavu cantarell-font
+sudo pacman -S htop zsh fzf tmux gvim zip unzip curl wget alacritty base-devel cmatrix scrot
+sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status ttf-dejavu cantarell-font
 sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulsemixer
-vim ~/.xinitrc # add 'exec i3'
+vim ~/.xinitrc # add 'exec i3', TODO: add xmodmap script when it's inplace
+# gvim overwrites vim to offer clipboard functionality in i3, use vim still
 
 # bluetoothctl, keyboard, xbox, and speaker, power scan trust pair connect
 pacman -S bluez bluez-utils
@@ -190,6 +191,7 @@ sudo pacman -S wine wine-mono wqy-zenhei
 sudo pacman -S steam # use default providers
 # reboot, proton will be installed by 'enable for all other titles'
 # runtime wine/proton issue, crash immediately, solved: swap req
+# screen tearing: https://wiki.archlinux.org/title/intel_graphics#Tearing
 
 # xpadneo for xbox one controller
 pacman -S dkms linux-headers
