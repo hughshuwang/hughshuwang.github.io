@@ -88,7 +88,7 @@
 
 <h4 id="installation">installation</h4>
 
-<p>last updated in august 2022, 15-min on optiplex 3080</p>
+<p>last updated in august 2022, 10-min on optiplex 3080</p>
 
 <pre><code class="language-zsh"># boot from flash disk as root@archiso
 iwctl # iwd for wifi, ping to check
@@ -97,6 +97,9 @@ timedatectl set-ntp true # timedatectl status
 # get partition and file systems ready in local disk
 fdisk /dev/&lt;nv...&gt; # gbt table, 3 partitions, mpigntdw
 fdisk -l # check table and partition types, p1 512M EFI, p2 8G swap (=RAM req by steam)
+
+# TODO: extra ssd, one partition, linux filesystem, automount setting? mount under home
+
 mkfs.ext4 /dev/&lt;nv...p3&gt; &amp;&amp; mkswap /dev/&lt;nv...p2&gt; &amp;&amp; mkfs.fat -F 32 /dev/&lt;nv...p1&gt;
 mount /dev/&lt;nv...p3&gt; /mnt &amp;&amp; swapon /dev/&lt;nv...p2&gt; &amp;&amp; mount --mkdir /dev/&lt;nv...p1&gt; /mnt/boot
 lsblk # check mounting points and swap
@@ -105,7 +108,7 @@ lsblk # check mounting points and swap
 vim /etc/pacman.d/mirrorlist # check/edit mirrors
 pacman -Sy archlinux-keyring # package signiture issue, keyring pkg out-of-date
 # https://wiki.archlinux.org/title/Pacman/Package_signing#Upgrade_system_regularly
-pacstrap /mnt base linux linux-firmware sudo vim git man-db man-pages texinfo networkmanager
+pacstrap /mnt base linux linux-firmware sudo gvim git man-db man-pages texinfo networkmanager
 genfstab -U /mnt &gt;&gt; /mnt/etc/fstab # use unique UUID
 arch-chroot /mnt # now in root dir as root
 timedatectl set-timezone America/New_York # timedatectl list-timezones; 
@@ -139,29 +142,19 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 
 <h4 id="day-1">day-1</h4>
 
-<p>the most essential tools for a minimal dev env</p>
+<p>the most essential tools</p>
 
 <ul>
-<li>kb remap with kbd and xmodmap</li>
-<li>grwm lite: i3, zsh/omz/fzf/aj, vim, lf</li>
-<li>tmux, vim(coc, nodejs, fzf) | compile/run/debug, copy/send</li>
+<li>gral: zsh/omz, fzf, vim (compile/build/debug integration, copy/send), lf</li>
 <li>concurrent rust, polars, jump/jlrs, glpk</li>
 </ul>
 
 <pre><code class="language-zsh"># rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch
 # sudo pacman -Q | less # explicitly installed pacman -Qe
-sudo pacman -S htop zsh fzf tmux gvim zip unzip curl wget alacritty base-devel cmatrix scrot
-sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status ttf-dejavu cantarell-font
-sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulsemixer
+sudo pacman -S htop zsh fzf tmux zip unzip curl wget alacritty base-devel cmatrix
+sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status ttf-dejavu cantarell-font scrot
+sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer # pulseaudio-bluetooth
 vim ~/.xinitrc # add 'exec i3', TODO: add xmodmap script when it's inplace
-# gvim overwrites vim to offer clipboard functionality in i3, use vim still
-
-# bluetoothctl, keyboard, xbox, and speaker, power scan trust pair connect
-pacman -S bluez bluez-utils
-sudo modprobe btusb # load the kernel module btusb
-sudo systemctl start bluetooth.service # status to check
-sudo systemctl enable bluetooth.service
-sudo vim /etc/bluetooth/main.conf # AutoEnable=true and DiscoverableTimeout=0
 
 # echo $SHELL # current # cat /etc/shells # installed shells
 chsh -s /bin/zsh # zsh as default shell
@@ -185,20 +178,21 @@ git config --global credential.helper store # store username and token
 
 <pre><code class="language-zsh">sudo vim /etc/pacman.conf # comment out multilib section
 sudo pacman -Syu # update/sync 32bit database
-sudo pacman -S xf86-video-intel mesa lib32-mesa
-sudo pacman -S lib32-systemd vulkan-intel lib32-vulkan-intel
-sudo pacman -S wine wine-mono wqy-zenhei
-sudo pacman -S steam # use default providers
+sudo pacman -S xf86-video-intel mesa lib32-mesa lib32-systemd vulkan-intel lib32-vulkan-intel
+sudo pacman -S wine wine-mono wqy-zenhei steam # use default providers
 # reboot, proton will be installed by 'enable for all other titles'
 # runtime wine/proton issue, crash immediately, solved: swap req
 # screen tearing: https://wiki.archlinux.org/title/intel_graphics#Tearing
 
-# xpadneo for xbox one controller
-pacman -S dkms linux-headers
+# xpadneo and bluetoothctl, power scan trust pair connect
+pacman -S bluez bluez-utils dkms linux-headers
+sudo modprobe btusb # load the kernel module btusb
+sudo systemctl start bluetooth.service &amp;&amp; sudo systemctl enable bluetooth.service
+sudo vim /etc/bluetooth/main.conf # AutoEnable=true and DiscoverableTimeout=0
 git clone https://github.com/atar-axis/xpadneo.git &amp;&amp; cd xpadneo
 sudo ./install.sh # with dkms, then bluetoothctl
 
-# TODO: games in SSD, edit fstab for auto-mount, add path to steam lib
+# TODO: edit fstab for auto-mount, add SSD path to steam lib
 </code></pre>
 
 <p><br><br><br><br>
