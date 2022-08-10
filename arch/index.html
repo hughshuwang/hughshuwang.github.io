@@ -144,7 +144,7 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 # sudo pacman -Q | less # explicitly installed pacman -Qe
 sudo pacman -S htop zsh fzf tmux zip unzip curl wget alacritty base-devel rust julia lpsolve glpk
 sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status scrot ttf-dejavu cantarell-font
-sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer # pulseaudio-bluetooth
+sudo pacman -S exa bat ripgrep procs pulseaudio pulseaudio-alsa pulsemixer # pulseaudio-bluetooth
 vim ~/.xinitrc # add 'exec i3', TODO: add xmodmap script when it's inplace
 
 # echo $SHELL # current # cat /etc/shells # installed shells
@@ -153,20 +153,16 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
+# deploy .files
+git clone https://github.com/shusheaan/gral # under ~/repos, cd, and ./install 
+git config --global credential.helper store # store username and token (for repo)
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+
 # aur: chrome, lf
 git clone https://aur.archlinux.org/&lt;pkg_name&gt;.git &amp;&amp; cd &lt;pkg_name&gt; # $HOME/builds
 makepkg -si # provided by pacman, check content of PKGBUILD before this
 # if asking for dependencies, use -s/--syncdeps and check pkg list
 #   build, then sudo pacman -U &lt;pkg_name&gt;...zst to install
-
-# gral@shusheaan, clone and ./install
-#   dotbot: git submodule add https://github.com/anishathalye/dotbot ./dotbot
-#   use token as password, when generating token specify usage (repo)
-git config --global credential.helper store # store username and token
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-
-# rust tools # | bat replacing | less
-sudo pacman -S exa bat ripgrep procs
 </code></pre>
 
 <h4 id="steam">steam</h4>
@@ -193,38 +189,6 @@ sudo ./install.sh # with dkms, then bluetoothctl
 <p><br><br><br><br>
 <br><br><br><br>
 <br><br><br><br></p>
-
-<h2 id="files">.files</h2>
-
-<p>automatically synced with gral@shusheaan, hidden by default</p>
-
-<h4 id="alacritty">alacritty</h4>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Falacritty.yml&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
-
-<h4 id="i3status">i3status</h4>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Fi3status.config&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
-
-<h4 id="i3wm">i3wm</h4>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Fi3.config&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
-
-<h4 id="lf">lf</h4>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Flfrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
-
-<h4 id="omz">omz</h4>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Fzshrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
-
-<h4 id="tmux">tmux</h4>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Ftmux.conf&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
-
-<h4 id="vim">vim</h4>
-
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Fvimrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
 
 <p><br><br><br><br>
 <br><br><br><br>
