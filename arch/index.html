@@ -142,8 +142,8 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 
 <pre><code class="language-zsh"># rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch
 # sudo pacman -Q | less # explicitly installed pacman -Qe
-sudo pacman -S htop zsh fzf tmux zip unzip curl wget alacritty base-devel cmatrix
-sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status ttf-dejavu cantarell-font scrot
+sudo pacman -S htop zsh fzf tmux zip unzip curl wget alacritty base-devel rust julia lpsolve glpk
+sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status scrot ttf-dejavu cantarell-font
 sudo pacman -S pulseaudio pulseaudio-alsa pulsemixer # pulseaudio-bluetooth
 vim ~/.xinitrc # add 'exec i3', TODO: add xmodmap script when it's inplace
 
@@ -160,9 +160,10 @@ makepkg -si # provided by pacman, check content of PKGBUILD before this
 #   build, then sudo pacman -U &lt;pkg_name&gt;...zst to install
 
 # gral@shusheaan, clone and ./install
-#   Vundle and dotbot require git submodule add &lt;url&gt; &lt;target_path&gt;
+#   dotbot: git submodule add https://github.com/anishathalye/dotbot ./dotbot
 #   use token as password, when generating token specify usage (repo)
 git config --global credential.helper store # store username and token
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
 # rust tools # | bat replacing | less
 sudo pacman -S exa bat ripgrep procs
@@ -189,11 +190,6 @@ sudo ./install.sh # with dkms, then bluetoothctl
 # TODO: edit fstab for auto-mount, add SSD path to steam lib
 </code></pre>
 
-<h4 id="rust">rust</h4>
-
-<pre><code># TODO: concurrent rust, polars, jump/jlrs, glpk
-</code></pre>
-
 <p><br><br><br><br>
 <br><br><br><br>
 <br><br><br><br></p>
@@ -204,31 +200,31 @@ sudo ./install.sh # with dkms, then bluetoothctl
 
 <h4 id="alacritty">alacritty</h4>
 
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fshell%2Falacritty.yml&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Falacritty.yml&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
 
 <h4 id="i3status">i3status</h4>
 
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fshell%2Fi3status.config&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Fi3status.config&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
 
 <h4 id="i3wm">i3wm</h4>
 
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fshell%2Fi3.config&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Fi3.config&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
 
 <h4 id="lf">lf</h4>
 
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fshell%2Flfrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Flfrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
 
 <h4 id="omz">omz</h4>
 
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fshell%2Fzshrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Fzshrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
 
 <h4 id="tmux">tmux</h4>
 
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fshell%2Ftmux.conf&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Ftmux.conf&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
 
 <h4 id="vim">vim</h4>
 
-<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Feditor%2Fvimrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
+<script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fshusheaan%2Fgral%2Fblob%2Fmain%2Fconfig%2Fvimrc&style=artelier-forest-dark&showBorder=off&showLineNumbers=on"></script>
 
 <p><br><br><br><br>
 <br><br><br><br>
