@@ -142,8 +142,8 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 
 <pre><code class="language-zsh"># rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch
 # sudo pacman -Q | less # explicitly installed pacman -Qe
-sudo pacman -S htop zsh fzf tmux zip unzip curl wget alacritty base-devel rust julia lpsolve glpk
-sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status scrot ttf-dejavu cantarell-font
+sudo pacman -S htop zsh fzf tmux zip unzip curl wget yarn alacritty base-devel gdb rustup julia lpsolve glpk
+sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status polybar scrot ttf-dejavu cantarell-font
 sudo pacman -S exa bat ripgrep procs pulseaudio pulseaudio-alsa pulsemixer # pulseaudio-bluetooth
 vim ~/.xinitrc # add 'exec i3', TODO: add xmodmap script when it's inplace
 
@@ -153,16 +153,21 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-# deploy .files
-git clone https://github.com/shusheaan/gral # under ~/repos, cd, and ./install 
-git config --global credential.helper store # store username and token (for repo)
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-
 # aur: chrome, lf
 git clone https://aur.archlinux.org/&lt;pkg_name&gt;.git &amp;&amp; cd &lt;pkg_name&gt; # $HOME/builds
 makepkg -si # provided by pacman, check content of PKGBUILD before this
 # if asking for dependencies, use -s/--syncdeps and check pkg list
 #   build, then sudo pacman -U &lt;pkg_name&gt;...zst to install
+
+# deploy .files
+git clone https://github.com/shusheaan/gral # under ~/repos, cd, and ./install 
+git config --global credential.helper store # store username and token (for repo)
+# deploy vimrc and :PlugInstall
+
+# rust + coc.nvim
+rustup default stable
+rustup component add rust-analysis rust-src
+# :CocInstall coc-rust-analyzer # allow coc to install rust-analyzer
 </code></pre>
 
 <h4 id="steam">steam</h4>
