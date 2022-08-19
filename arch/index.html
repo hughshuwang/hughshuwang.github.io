@@ -106,7 +106,7 @@ lsblk # check mounting points and swap
 vim /etc/pacman.d/mirrorlist # check/edit mirrors
 pacman -Sy archlinux-keyring # package signiture issue, keyring pkg out-of-date
 # https://wiki.archlinux.org/title/Pacman/Package_signing#Upgrade_system_regularly
-pacstrap /mnt base linux linux-firmware sudo gvim git man-db man-pages tldr networkmanager
+pacstrap /mnt base linux linux-firmware sudo nvim git man-db man-pages tldr networkmanager
 genfstab -U /mnt &gt;&gt; /mnt/etc/fstab # use unique UUID
 arch-chroot /mnt # now in root dir as root
 timedatectl set-timezone America/New_York # timedatectl list-timezones; 
@@ -143,7 +143,7 @@ sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
 <pre><code class="language-zsh"># rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch
 # sudo pacman -Q | less # explicitly installed pacman -Qe
 sudo pacman -S htop zsh fzf tmux zip unzip curl wget yarn alacritty base-devel gdb rustup julia lpsolve glpk
-sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape i3-wm i3status polybar scrot ttf-dejavu cantarell-font
+sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape xclip i3-wm i3status polybar scrot ttf-dejavu cantarell-font
 sudo pacman -S exa bat ripgrep procs pulseaudio pulseaudio-alsa pulsemixer # pulseaudio-bluetooth
 vim ~/.xinitrc # add 'exec i3', TODO: add xmodmap script when it's inplace
 
