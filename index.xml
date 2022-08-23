@@ -40,33 +40,5 @@
 &lt;/div&gt;&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title>playlists</title>
-      <link>https://cyaned.co/playlists/</link>
-      <pubDate>Thu, 18 May 1995 16:41:08 -0400</pubDate>
-      
-      <guid>https://cyaned.co/playlists/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;../../images/isabella_min.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;div style=&#39;font-size: 13px&#39; align=&#39;right&#39;&gt;
-    &#34;perusing the MoMA, i&#39;m on all my lonely, burst in tears.&#34;&lt;br&gt;
-     - frank ocean
-&lt;/div&gt;</description>
-    </item>
-    
-    <item>
-      <title>archlinux</title>
-      <link>https://cyaned.co/arch/</link>
-      <pubDate>Wed, 17 May 1995 16:41:08 -0400</pubDate>
-      
-      <guid>https://cyaned.co/arch/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;../../images/arch.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
-&lt;div style=&#39;font-size: 13px&#39; align=&#39;right&#39;&gt;
-    &#34;layers of abstraction that serve to hide internals are never a good thing.&#34;&lt;br&gt;
-     - aaron griffin
-&lt;/div&gt;</description>
-    </item>
-    
   </channel>
 </rss>
