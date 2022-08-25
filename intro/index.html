@@ -82,14 +82,39 @@
 <br><br><br><br>
 <br><br><br><br></p>
 
-<h2 id="usually-i">usually, i&hellip;</h2>
+<h2 id="so-im-a">so, im a&hellip;</h2>
 
 <ul>
-<li>build scale model, lego mocs, websites, car mods, and tune my arch linux</li>
-<li>play my white strat and piano, listen to alt r&amp;b, jazz, pop, and ambient music<br /></li>
-<li>shoot and color grade portraits, artistic cinema footages, and documentaries<br /></li>
-<li>play tennis in summer; cruise and carve in snowy mountains in vt, nh, and me</li>
-<li>rock my hhkb, code in vim, and solve math problems for the world&rsquo;s largest bank</li>
+<li>free software advocate
+
+<ul>
+<li>i only uses <a href="https://archlinux.org/">arch linux</a> in all of my computing devices</li>
+<li>i only uses <a href="https://www.fsf.org/">open source software</a> for my own projects</li>
+</ul></li>
+<li>lame musician
+
+<ul>
+<li>i play a <a href="https://www.fender.com/en-US/mod-shop.html">custom build fender strat</a> and a roland fp (both in white)</li>
+<li>i collect vinyls and listen to alt r&amp;b, jazz, dream pop, and ambient music</li>
+</ul></li>
+<li>poser photographer
+
+<ul>
+<li>i shoot and color grade portraits and landscape pics, and post them here</li>
+<li>i (very) occasionally produce artistic cinema footages, and documentaries</li>
+</ul></li>
+<li>car enthusiast
+
+<ul>
+<li>i tune every part of my car except for the power unit and the gear box</li>
+<li>i make friends who drive jdms and bmws, and do tons of touge driving</li>
+</ul></li>
+<li>sport lover
+
+<ul>
+<li>i play tennis (NTRP 4.0) in summer</li>
+<li>i do carving snowboarding in winter</li>
+</ul></li>
 </ul>
 
 <p><br><br><br><br>
@@ -110,7 +135,6 @@
 <li><a href="https://shop.kanyewest.com/">kanye west</a></li>
 <li><a href="https://www.imdb.com/name/nm0939182/">kar-wai wong</a></li>
 <li><a href="https://mitsloan.mit.edu/faculty/directory/leonid-kogan">leonid kogan</a></li>
-<li><a href="https://www.imdb.com/name/nm0651900/">mamoru oshii</a></li>
 <li><a href="https://www.imdb.com/name/nm0000233/">quentin tarantino</a></li>
 <li><a href="https://www.imdb.com/name/nm0000040/">stanley kubrick</a></li>
 </ul>
@@ -125,14 +149,12 @@
 <li>&ldquo;w.h.h.&rdquo;</li>
 <li>&ldquo;all journeys will end&rdquo;</li>
 <li>&ldquo;be gentle with yourself&rdquo;</li>
-<li>&ldquo;caring is not an advantage&rdquo;</li>
 <li>&ldquo;keep breathing and hydrated&rdquo;</li>
 <li>&ldquo;don&rsquo;t overheat and don&rsquo;t lose control&rdquo;</li>
 <li>&ldquo;it&rsquo;s all about relationship management&rdquo;</li>
 <li>&ldquo;lightweight makes you fast everywhere&rdquo;</li>
 <li>&ldquo;nothing to rush for, people will die soon&rdquo;</li>
 <li>&ldquo;optimize for peacefulness, in all directions&rdquo;</li>
-<li>&ldquo;don&rsquo;t take anything you can&rsquo;t afford to lose&rdquo;</li>
 </ul>
 
 <p><br><br><br><br>
@@ -146,113 +168,24 @@
 <li><a href="https://mitsloan.mit.edu/">mit sloan school of management</a></li>
 <li><a href="https://am.jpmorgan.com/us/en/asset-management/liq/">j.p. morgan asset management</a></li>
 <li><a href="https://www.berklee.edu/">berklee college of music</a></li>
-<li><a href="https://www.media.mit.edu/">mit media lab</a></li>
 </ul>
 
 <p><br><br><br><br>
 <br><br><br><br>
 <br><br><br><br></p>
 
-<h2 id="btw-i-use">btw i use&hellip;</h2>
+<h2 id="core-code">core code&hellip;</h2>
 
-<p>a simple note for a simple hobbie to pursuit ultimate simplicity</p>
+<ul>
+<li><a href="https://github.com/shusheaan/gral"><code>gral</code></a>: personal arch .files</li>
+<li><a href="https://github.com/shusheaan/cynd"><code>cynd</code></a>: main artistic thread</li>
+<li><a href="https://github.com/shusheaan/miso"><code>miso</code></a>: next gen of <a href="https://github.com/shusheaan/mist"><code>mist</code></a></li>
+<li><a href="https://github.com/shusheaan/utrp"><code>utrp</code></a>: cli musical coach</li>
+</ul>
 
-<pre><code class="language-zsh"># boot from flash disk as root@archiso
-iwctl # iwd for wifi, ping to check
-timedatectl set-ntp true # timedatectl status
-
-# get partition and file systems ready in local disk
-fdisk /dev/&lt;nv...&gt; # gbt table, 3 partitions, mpigntdw
-fdisk -l # check table and partition types, p1 512M EFI, p2 8G swap (=RAM req by steam)
-
-# TODO: extra ssd, one partition, linux filesystem, automount setting? mount under home
-
-mkfs.ext4 /dev/&lt;nv...p3&gt; &amp;&amp; mkswap /dev/&lt;nv...p2&gt; &amp;&amp; mkfs.fat -F 32 /dev/&lt;nv...p1&gt;
-mount /dev/&lt;nv...p3&gt; /mnt &amp;&amp; swapon /dev/&lt;nv...p2&gt; &amp;&amp; mount --mkdir /dev/&lt;nv...p1&gt; /mnt/boot
-lsblk # check mounting points and swap
-
-# installation and basic configs
-vim /etc/pacman.d/mirrorlist # check/edit mirrors
-pacman -Sy archlinux-keyring # package signiture issue, keyring pkg out-of-date
-# https://wiki.archlinux.org/title/Pacman/Package_signing#Upgrade_system_regularly
-pacstrap /mnt base linux linux-firmware sudo nvim git man-db man-pages tldr networkmanager
-genfstab -U /mnt &gt;&gt; /mnt/etc/fstab # use unique UUID
-arch-chroot /mnt # now in root dir as root
-timedatectl set-timezone America/New_York # timedatectl list-timezones; 
-hwclock --systohc # generate /etc/adjtime
-vim /etc/locale.gen # uncomment en_US.UTF-8 UTF-8
-locale-gen
-vim /etc/locale.conf # add LANG=en_US.UTF-8 
-vim /etc/hostname
-passwd
-
-# grub, nmcli, and add sudo user
-pacman -S grub efibootmgr # efibootmgr for grub
-mount --mkdir /dev/&lt;nv...p1&gt; /boot/efi # ignore fstab warnings
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
-grub-mkconfig -o /boot/grub/grub.cfg
-useradd -m &lt;username&gt; &amp;&amp; passwd &lt;username&gt; # --create-home
-# sudo -lU &lt;username&gt; # check sudo privilege
-usermod -aG wheel &lt;username&gt; # --append --groups 
-vim /etc/sudoers # uncomment %wheel ALL=(ALL) ALL
-exit # check pwd at /
-umount -R /mnt &amp;&amp; reboot
-
-# log in as normal user
-sudo systemctl start NetworkManager.service # run status to check
-sudo systemctl enable NetworkManager.service # auto connect
-# nmcli device wifi list # show available wifi
-sudo nmcli device wifi connect &lt;wifi_name&gt; password &lt;wifi_password&gt; # ping
-sudo pacman -Syu
-sudo pacman -S neofetch &amp;&amp; neofetch # enjoy
-
-# essentials
-# rmdir nl whereis locate find chmod df du free ln diff date grep wc ps watch
-# sudo pacman -Q | less # explicitly installed pacman -Qe
-sudo pacman -S htop zsh fzf tmux zip unzip curl wget yarn alacritty base-devel clang gdb rustup julia coin-or-cbc
-sudo pacman -S xorg xorg-xinit xorg-xmodmap xcape xclip i3-wm i3status polybar scrot ttf-dejavu cantarell-font
-sudo pacman -S exa bat ripgrep procs pulseaudio pulseaudio-alsa pulsemixer # pulseaudio-bluetooth
-vim ~/.xinitrc # add 'exec i3', TODO: add xmodmap script when it's inplace
-
-# echo $SHELL # current # cat /etc/shells # installed shells
-chsh -s /bin/zsh # zsh as default shell
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh # sammy
-git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-
-# aur: chrome, lf
-git clone https://aur.archlinux.org/&lt;pkg_name&gt;.git &amp;&amp; cd &lt;pkg_name&gt; # $HOME/builds
-makepkg -si # provided by pacman, check content of PKGBUILD before this
-# if asking for dependencies, use -s/--syncdeps and check pkg list
-#   build, then sudo pacman -U &lt;pkg_name&gt;...zst to install
-
-# deploy .files
-git clone https://github.com/shusheaan/gral # under ~/repos, cd, and ./install 
-git config --global credential.helper store # store username and token (for repo)
-# deploy vimrc and :PlugInstall
-
-# rust + coc.nvim
-rustup default stable
-rustup component add rust-analysis rust-src
-# :CocInstall coc-rust-analyzer # allow coc to install rust-analyzer
-
-# steam
-sudo vim /etc/pacman.conf # comment out multilib section
-sudo pacman -Syu # update/sync 32bit database
-sudo pacman -S xf86-video-intel mesa lib32-mesa lib32-systemd vulkan-intel lib32-vulkan-intel
-sudo pacman -S wine wine-mono wqy-zenhei steam # use default providers
-# reboot, proton will be installed by 'enable for all other titles'
-# runtime wine/proton issue, crash immediately, solved: swap req
-# screen tearing: https://wiki.archlinux.org/title/intel_graphics#Tearing
-
-# xpadneo and bluetoothctl, power scan trust pair connect
-pacman -S bluez bluez-utils dkms linux-headers
-sudo modprobe btusb # load the kernel module btusb
-sudo systemctl start bluetooth.service &amp;&amp; sudo systemctl enable bluetooth.service
-sudo vim /etc/bluetooth/main.conf # AutoEnable=true and DiscoverableTimeout=0
-git clone https://github.com/atar-axis/xpadneo.git &amp;&amp; cd xpadneo
-sudo ./install.sh # with dkms, then bluetoothctl
-</code></pre>
+<p><br><br><br><br>
+<br><br><br><br>
+<br><br><br><br></p>
 
 <p><br><br><br><br>
 <br><br><br><br>
